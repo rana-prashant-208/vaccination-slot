@@ -19,7 +19,7 @@
 			
 function httpGetAsync(theUrl, callback)
 {
-	console.log("Called")
+	console.log("Checking again")
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
     	
@@ -29,7 +29,6 @@ function httpGetAsync(theUrl, callback)
         	callback(null);
         }
          if (xmlHttp.readyState == 4 ){
-         	console.log("onreadystatechange")
          	i = 0;
          	document.getElementById("loading").innerHTML="Refreshed"
 			setInterval(function() {
@@ -51,7 +50,7 @@ function retry(responseText){
  			document.getElementById("center").innerHTML=center.name;
  			for (var j = 0; j < center.sessions.length; j++) {
  				var session=center.sessions[j];
- 				if(parseInt(session.min_age_limit)==18&&parseInt((session.available_capacity))>0){
+ 				if(parseInt(session.min_age_limit)==18&&parseInt((session.available_capacity))==0){
  					 console.log(center);
  					 beep();
  					 document.getElementById("status").innerHTML="Available";
@@ -71,6 +70,7 @@ function beep() {
 // retry(null);
 function myFunction(){
 	var url="https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+document.getElementById("pincode").value+"&date="+document.getElementById("date").value;
+	console.log("Hi Stalker,Checking.")
 
 	httpGetAsync(url,retry)
 }
