@@ -34,7 +34,6 @@ function httpGetAsync(theUrl, callback)
 			setInterval(function() {
   			j = ++i % 4;
   			document.getElementById("loading").innerHTML=("Checking in " +(60-i)+" seconds"+ Array(j+1).join("."));			}, 1000);
-			}, 1000);
         	setTimeout(function(){ httpGetAsync(theUrl,retry) }, 60000);
 
          }
@@ -87,5 +86,6 @@ function myFunction(){
 			<div id="center"></div>
 			<div id="status"></div>
 		</div>
+		<div id="notice">Website updated on 13/05/2021</div>
 	</body>
 </html>
