@@ -32,10 +32,10 @@ function httpGetAsync(theUrl, callback)
          	i = 0;
          	document.getElementById("loading").innerHTML="Refreshed"
 			setInterval(function() {
-  			i = ++i % 4;
-  				document.getElementById("loading").innerHTML=("Checking" + Array(i+1).join("."));
-			}, 800);
-        	setTimeout(function(){ httpGetAsync(theUrl,retry) }, 10000);
+  			j = ++i % 4;
+  			document.getElementById("loading").innerHTML=("Checking in " +(60-i)+" seconds"+ Array(j+1).join("."));			}, 1000);
+			}, 1000);
+        	setTimeout(function(){ httpGetAsync(theUrl,retry) }, 60000);
 
          }
     }
@@ -50,7 +50,7 @@ function retry(responseText){
  			document.getElementById("center").innerHTML=center.name;
  			for (var j = 0; j < center.sessions.length; j++) {
  				var session=center.sessions[j];
- 				if(parseInt(session.min_age_limit)==18&&parseInt((session.available_capacity))==0){
+ 				if(parseInt(session.min_age_limit)==18&&parseInt((session.available_capacity))>0){
  					 console.log(center);
  					 beep();
  					 document.getElementById("status").innerHTML="Available";
