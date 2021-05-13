@@ -49,6 +49,9 @@ function retry(responseText){
 		try {
 
 		var response= JSON.parse(responseText);
+		if(response.centers.length==0){
+			document.getElementById("status").innerHTML="Center not Available";
+		}
 		for (var i = 0; i < response.centers.length; i++) {
  			var center=response.centers[i];
  			document.getElementById("center").innerHTML=center.name;
